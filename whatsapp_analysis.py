@@ -1,4 +1,3 @@
-# Import library yang diperlukan
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -7,26 +6,24 @@ from datetime import datetime
 
 def process_whatsapp_chat(file_path):
     try:
-        # Baca file chat
+        # read chat file
         with open(file_path, 'r', encoding='utf-8') as file:
             chat_lines = file.readlines()
         
         messages = []
-        # Pattern baru yang sesuai dengan format di screenshot Anda
-        # [14/08/21, 18.41.29] Name: Message
         pattern = r'\[(\d{2}/\d{2}/\d{2}), (\d{2}\.\d{2}\.\d{2})\] ([^:]+): (.+)'
         
         print("Membaca file chat...")
         print(f"Total baris yang dibaca: {len(chat_lines)}")
         
         for line in chat_lines:
-            # Bersihkan karakter kontrol unicode
+            # Clean character unicode(Sticker)
             clean_line = line.replace('[U+200E]', '').strip()
             match = re.match(pattern, clean_line)
             
             if match:
                 date, time, user, message = match.groups()
-                # Filter pesan sistem
+                # Filter chat system
                 if not any(keyword in message for keyword in 
                          ['was added', 'sticker omitted', 'Messages and calls are end-to-end encrypted']):
                     messages.append({
@@ -37,7 +34,7 @@ def process_whatsapp_chat(file_path):
                     })
         
         print(f"Total pesan yang berhasil diproses: {len(messages)}")
-        # Debug: tampilkan beberapa pesan pertama
+        # Debug: Show some first chat
         if messages:
             print("\nContoh beberapa pesan pertama:")
             for msg in messages[:3]:
@@ -59,10 +56,10 @@ def analyze_chat(df):
         return
     
     try:
-        # Hitung jumlah pesan per user
+        # Count user chats
         message_counts = df['user'].value_counts()
         
-        # Buat visualisasi
+        # Create visualization
         plt.figure(figsize=(12, 6))
         sns.barplot(x=message_counts.values, y=message_counts.index)
         plt.title('Jumlah Pesan per Anggota Grup WhatsApp')
@@ -70,7 +67,7 @@ def analyze_chat(df):
         plt.ylabel('Nama Anggota')
         plt.tight_layout()
         
-        # Simpan grafik
+        # save grafik
         plt.savefig('chat_analysis.png')
         plt.show()
         

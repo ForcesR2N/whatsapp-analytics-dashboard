@@ -2,6 +2,12 @@
 
 A simple Python tool to analyze and visualize WhatsApp group chat patterns.
 
+<div align="center">
+  <p float="left">
+    <img src="chat_analysis.png" alt="Results Screen" width="777" hspace="10" />
+  </p>
+</div>
+
 ## Objective
 - Count and visualize message frequency per user in WhatsApp groups
 - Generate basic statistics about group activity

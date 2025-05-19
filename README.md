@@ -17,7 +17,7 @@ A simple Python tool to analyze and visualize WhatsApp group chat patterns.
 - Bar chart visualization (chat_analysis.png)
 - Basic chat statistics including:
   - Total messages
-  - Most active users
+  - Most active users 
 
 ## Source
 Export Whatsapp chats

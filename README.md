@@ -18,7 +18,7 @@ A simple Python tool to analyze and visualize WhatsApp group chat patterns.
 - Basic chat statistics including:
   - Total messages
   - Most active users 
-
+ 
 ## Source
 Export Whatsapp chats
 <br>

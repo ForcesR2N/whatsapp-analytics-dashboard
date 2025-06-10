@@ -1,5 +1,5 @@
 # WhatsApp Analytics Dashboard
-  
+   
 A simple Python tool to analyze and visualize WhatsApp group chat patterns.
 
 <div align="center">
